@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 1c2ec16f4be88f14f8b4b5c6312c8c97
+timeCreated: 1502959370
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - splashTexture: {fileID: 2800000, guid: 24b0444902a1a3b469bd0c30a5b16541, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
