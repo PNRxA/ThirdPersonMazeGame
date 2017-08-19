@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SimpleRotate : MonoBehaviour
 {
-	public float xrot, yrot, zrot;
+    public float xrot, yrot, zrot;
     // Use this for initialization
     void Start()
     {
@@ -14,6 +14,7 @@ public class SimpleRotate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		transform.Rotate(new Vector3(xrot,yrot,zrot));
+        //Rotate based on public variables
+        transform.Rotate(new Vector3(xrot, yrot, zrot));
     }
 }

@@ -20,11 +20,13 @@ public class Menu : MonoBehaviour
 
     void Awake()
     {
+        //After 2 seconds stop showing the splashscreen
         Invoke("EndSplash", 2f);
     }
 
     void FixedUpdate()
     {
+        //Move the camera based on menu navigation
         if (showSelectCharacterMenu)
         {
             float step = speed * Time.deltaTime;
@@ -46,6 +48,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Run the pause function when pressing escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
@@ -54,9 +57,11 @@ public class Menu : MonoBehaviour
 
     void OnGUI()
     {
+        //Define the screen height and width for element placement
         scrH = Screen.height / 9;
         scrW = Screen.width / 16;
 
+        //Determine what menu to show based on booleans 
         if (splash)
         {
             Splash();
@@ -84,17 +89,20 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function for splash screen
     void Splash()
     {
         GUI.DrawTexture(new Rect(0, 0, scrW * 16, scrH * 9), splashTexture, ScaleMode.StretchToFill);
     }
 
+    //Function to stop showing splash screen
     void EndSplash()
     {
         splash = false;
         showMainMenu = true;
     }
 
+    //Function for main menu
     void MainMenu()
     {
         GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), "Some Game");
@@ -116,6 +124,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function for select character menu
     void SelectCharacterMenu()
     {
         GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), "Select a character.");
@@ -138,6 +147,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function for the options menu
     void OptionsMenu()
     {
         if (GUI.Button(new Rect(0, 0, scrW * 16, scrH * 9), "Back"))
@@ -146,6 +156,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function for the pause menu 
     void PauseMenu()
     {
         GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), "Game Paused");
@@ -167,6 +178,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function to start the game
     void StartGame(bool asScientist)
     {
         showMainMenu = false;
@@ -184,6 +196,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function to pause the game
     void PauseGame()
     {
         showPauseMenu = !showPauseMenu;
@@ -198,6 +211,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    //Function to go from playing the game back to the main menu
     void ToMenu()
     {
         showMainMenu = true;
@@ -208,12 +222,16 @@ public class Menu : MonoBehaviour
 
         menuCamera.SetActive(true);
         game1Scientist.transform.position = game1ScientistSpawn.transform.position;
+        game1Scientist.transform.rotation = game1ScientistSpawn.transform.rotation;
         game1Scientist.SetActive(false);
         game1Monster.transform.position = game1MonsterSpawn.transform.position;
+        game1Monster.transform.rotation = game1MonsterSpawn.transform.rotation;
         game1Monster.SetActive(false);
         game2Scientist.transform.position = game2ScientistSpawn.transform.position;
+        game2Scientist.transform.rotation = game2ScientistSpawn.transform.rotation;
         game2Scientist.SetActive(false);
         game2Monster.transform.position = game2MonsterSpawn.transform.position;
+        game2Monster.transform.rotation = game2MonsterSpawn.transform.rotation;
         game2Monster.SetActive(false);
     }
 }

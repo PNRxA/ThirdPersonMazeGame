@@ -16,6 +16,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void FixedUpdate()
     {
+        //If the camera is not locked, allow player to move it
         if (!locked)
         {
             cam = GetComponent<Camera>();
