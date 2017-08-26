@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class Menu : MonoBehaviour
     public GameObject selectCharacterPosition, mainMenuPosition;
     public GameObject game1ScientistSpawn, game1MonsterSpawn, game2ScientistSpawn, game2MonsterSpawn;
     public float speed = 10f;
+    private float timeLimit = 300f;
 
     void Awake()
     {
@@ -87,6 +89,16 @@ public class Menu : MonoBehaviour
             PauseMenu();
 
         }
+        else
+        {
+            HUD();
+        }
+    }
+
+    void HUD()
+    {
+        GUI.Box(new Rect(scrW, scrH, scrW * 3f, scrH), timeLimit.ToString());
+        timeLimit -= Time.deltaTime;
     }
 
     //Function for splash screen
@@ -219,6 +231,7 @@ public class Menu : MonoBehaviour
         showOptionsMenu = false;
         inGame = false;
         showPauseMenu = false;
+        timeLimit = 300f;
 
         menuCamera.SetActive(true);
         game1Scientist.transform.position = game1ScientistSpawn.transform.position;
