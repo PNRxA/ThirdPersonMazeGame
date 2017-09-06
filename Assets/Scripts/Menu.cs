@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     private bool showSelectCharacterMenu = false;
     private bool showOptionsMenu = false;
     private bool inGame = false;
+    public bool gameOver = false;
     public bool showPauseMenu = false;
     public GameObject menuCamera;
     public Texture2D splashTexture;
@@ -55,6 +56,11 @@ public class Menu : MonoBehaviour
         {
             PauseGame();
         }
+
+        if (gameOver == true && showPauseMenu == false)
+        {
+            PauseGame();
+        }
     }
 
     void OnGUI()
@@ -64,7 +70,11 @@ public class Menu : MonoBehaviour
         scrW = Screen.width / 16;
 
         //Determine what menu to show based on booleans 
-        if (splash)
+        if (gameOver)
+        {
+            GameOverScreen();
+        }
+        else if (splash)
         {
             Splash();
         }
@@ -190,6 +200,17 @@ public class Menu : MonoBehaviour
         }
     }
 
+    void GameOverScreen()
+    {
+        GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), "Game Over!");
+
+        if (GUI.Button(new Rect(scrW * 7.5f, scrH * 4, scrW * 2, scrH), "Back to main menu"))
+        {
+            PauseGame();
+            ToMenu();
+        }
+    }
+
     //Function to start the game
     void StartGame(bool asScientist)
     {
@@ -216,10 +237,14 @@ public class Menu : MonoBehaviour
         if (showPauseMenu)
         {
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
             Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
@@ -230,6 +255,10 @@ public class Menu : MonoBehaviour
         showSelectCharacterMenu = false;
         showOptionsMenu = false;
         inGame = false;
+        showPauseMenu = false;
+        gameOver = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         showPauseMenu = false;
         timeLimit = 300f;
 
