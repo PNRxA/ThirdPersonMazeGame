@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     private bool showSelectCharacterMenu = false;
     private bool showOptionsMenu = false;
     private bool inGame = false;
+    public bool win = false;
     public bool gameOver = false;
     public bool showPauseMenu = false;
     public GameObject menuCamera;
@@ -70,9 +71,13 @@ public class Menu : MonoBehaviour
         scrW = Screen.width / 16;
 
         //Determine what menu to show based on booleans 
-        if (gameOver)
+        if (gameOver && win)
         {
-            GameOverScreen();
+            GameOverScreen("You Win!");
+        }
+        else if (gameOver)
+        {
+            GameOverScreen("Game Over!");
         }
         else if (splash)
         {
@@ -200,11 +205,11 @@ public class Menu : MonoBehaviour
         }
     }
 
-    void GameOverScreen()
+    void GameOverScreen(string message)
     {
-        GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), "Game Over!");
+        GUI.Box(new Rect(scrW * 7, scrH * 2, scrW * 3, scrH), message);
 
-        if (GUI.Button(new Rect(scrW * 7.5f, scrH * 4, scrW * 2, scrH), "Back to main menu"))
+        if (GUI.Button(new Rect(scrW * 6.5f, scrH * 4, scrW * 4, scrH), "Back to main menu"))
         {
             PauseGame();
             ToMenu();
@@ -257,6 +262,7 @@ public class Menu : MonoBehaviour
         inGame = false;
         showPauseMenu = false;
         gameOver = false;
+        win = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         showPauseMenu = false;
