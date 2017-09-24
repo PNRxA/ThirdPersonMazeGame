@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
+    // Menu navigation logic
     private bool splash = true;
     private bool showMainMenu = false;
     private bool showSelectCharacterMenu = false;
@@ -13,15 +14,26 @@ public class Menu : MonoBehaviour
     public bool win = false;
     public bool gameOver = false;
     public bool showPauseMenu = false;
+
+    // Camera to see the menu screens
     public GameObject menuCamera;
+    // Splash screen art
     public Texture2D splashTexture;
+    // GUI screen height and screen width
     private float scrH, scrW;
+    // Characters
     public GameObject game1Scientist, game1Monster, game2Scientist, game2Monster;
+    // Move to position for the select character menu
     public GameObject selectCharacterPosition, mainMenuPosition;
+    // Spawn points for AI and player
     public GameObject game1ScientistSpawn, game1MonsterSpawn, game2ScientistSpawn, game2MonsterSpawn;
     public float speed = 10f;
+
+    // Time limit to complete the level
     private float timeLimit = 300f;
-    public static int health = 5;
+
+    // Player's health
+    public static int health = 3;
 
     void Awake()
     {
@@ -47,6 +59,7 @@ public class Menu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Set player and AI to their spawn points
         game1Scientist.transform.position = game1ScientistSpawn.transform.position;
         game1Scientist.transform.rotation = game1ScientistSpawn.transform.rotation;
         game1Scientist.SetActive(false);
@@ -64,7 +77,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Run the pause function when pressing escape
+        // Run the pause function when pressing escape
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
@@ -78,11 +91,11 @@ public class Menu : MonoBehaviour
 
     void OnGUI()
     {
-        //Define the screen height and width for element placement
+        // Define the screen height and width for element placement
         scrH = Screen.height / 9;
         scrW = Screen.width / 16;
 
-        //Determine what menu to show based on booleans 
+        // Determine what menu to show based on booleans 
         if (gameOver && win)
         {
             GameOverScreen("You Win!");
@@ -124,9 +137,12 @@ public class Menu : MonoBehaviour
 
     void HUD()
     {
+        // Display time remaining
         GUI.Box(new Rect(scrW, scrH, scrW * 3f, scrH), timeLimit.ToString());
+        // Decrease time per second
         timeLimit -= Time.deltaTime;
 
+        // Displays health
         GUI.Box(new Rect(scrW * 5, scrH, scrW * 2, scrH), "Lives " + health);
     }
 
@@ -161,6 +177,7 @@ public class Menu : MonoBehaviour
 
         if (GUI.Button(new Rect(scrW * 7.5f, scrH * 7, scrW * 2, scrH), "Quit"))
         {
+            // Exit the game
             Application.Quit();
         }
     }
@@ -172,12 +189,14 @@ public class Menu : MonoBehaviour
         if (GUI.Button(new Rect(scrW * 4f, scrH * 5f, scrW * 2, scrH), "Scientist"))
         {
             showSelectCharacterMenu = false;
+            // Start game (as scientist)
             StartGame(true);
         }
 
         if (GUI.Button(new Rect(scrW * 11f, scrH * 5, scrW * 2, scrH), "Monster"))
         {
             showSelectCharacterMenu = false;
+            // Start game (as other character)
             StartGame(false);
         }
 
@@ -215,6 +234,7 @@ public class Menu : MonoBehaviour
         if (GUI.Button(new Rect(scrW * 7.5f, scrH * 7, scrW * 2, scrH), "Back to main menu"))
         {
             PauseGame();
+            // Go back to main menu and reset everything
             ToMenu();
         }
     }
@@ -226,6 +246,7 @@ public class Menu : MonoBehaviour
         if (GUI.Button(new Rect(scrW * 6.5f, scrH * 4, scrW * 4, scrH), "Back to main menu"))
         {
             PauseGame();
+            // Go back to main menu and reset everything
             ToMenu();
         }
     }
@@ -235,6 +256,7 @@ public class Menu : MonoBehaviour
     {
         showMainMenu = false;
         inGame = true;
+        // Turn off menu carmera and activate player in chosen level
         menuCamera.SetActive(false);
         if (asScientist)
         {
@@ -251,8 +273,10 @@ public class Menu : MonoBehaviour
     //Function to pause the game
     void PauseGame()
     {
+        // Toggle pause menu
         showPauseMenu = !showPauseMenu;
 
+        // Un/freeze time, un/lock cursor and un/hide cursor
         if (showPauseMenu)
         {
             Time.timeScale = 0;
@@ -270,6 +294,7 @@ public class Menu : MonoBehaviour
     //Function to go from playing the game back to the main menu
     void ToMenu()
     {
+        // Set EVERYTHING back to default / starting values
         health = 5;
         showMainMenu = true;
         showSelectCharacterMenu = false;

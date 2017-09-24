@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Animator playerAnimator;
     private Animator anim;
     private bool attacking;
+    private bool stunned = false;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class Enemy : MonoBehaviour
     {
         agent.destination = target.transform.position;
 
+        // If agent has reaches the player
         if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -39,10 +41,14 @@ public class Enemy : MonoBehaviour
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
                     //menu.gameOver = true;
-                    if (attacking == false && Menu.health > 0)
+                    // Attack the player if he's alive and cooldown for a few seconds
+                    if (attacking == false && Menu.health > 0 && stunned == false)
                     {
+                        // Enemy is attacking
                         attacking = true;
+                        // Attack function
                         Attack();
+                        // Stop moving till after attack
                         agent.Stop();
                     }
                 }
@@ -63,16 +69,44 @@ public class Enemy : MonoBehaviour
     {
         if (attacking == true)
         {
+            // Play attack animation
             anim.SetTrigger("attack");
-            playerAnimator.SetTrigger("hurt");
+            // Damage player
             Menu.health--;
+            // Slight delay then player hurt animation
+            Invoke("HurtPlayer", .5f);
+            // Resume moving after a short delay
             Invoke("EndAttack", 2);
         }
     }
 
+    void HurtPlayer()
+    {
+        // Player hurt animation on player
+        playerAnimator.SetTrigger("hurt");
+    }
+
     void EndAttack()
     {
+        // End attack and resume moving
         attacking = false;
+        agent.Resume();
+    }
+
+    // Enter stunned state and unstun after 2 seconds
+    public void StunAgent()
+    {
+        stunned = true;
+        agent.Stop();
+        Invoke("UnstunAgent", 5);
+        anim.SetTrigger("hurt");
+        anim.SetBool("stunned", true);
+    }
+
+    public void UnstunAgent()
+    {
+        stunned = false;
+        anim.SetBool("stunned", false);
         agent.Resume();
     }
 }

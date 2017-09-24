@@ -53,6 +53,10 @@ public class PlayerMove : MonoBehaviour
             }
             isDead = true;
         }
+        if (Menu.health > 0)
+        {
+            isDead = false;
+        }
     }
 
     void GameOver()
