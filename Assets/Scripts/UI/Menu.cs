@@ -21,6 +21,7 @@ public class Menu : MonoBehaviour
     public GameObject game1ScientistSpawn, game1MonsterSpawn, game2ScientistSpawn, game2MonsterSpawn;
     public float speed = 10f;
     private float timeLimit = 300f;
+    public static int health = 5;
 
     void Awake()
     {
@@ -46,7 +47,18 @@ public class Menu : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        game1Scientist.transform.position = game1ScientistSpawn.transform.position;
+        game1Scientist.transform.rotation = game1ScientistSpawn.transform.rotation;
+        game1Scientist.SetActive(false);
+        game1Monster.transform.position = game1MonsterSpawn.transform.position;
+        game1Monster.transform.rotation = game1MonsterSpawn.transform.rotation;
+        game1Monster.SetActive(false);
+        game2Scientist.transform.position = game2ScientistSpawn.transform.position;
+        game2Scientist.transform.rotation = game2ScientistSpawn.transform.rotation;
+        game2Scientist.SetActive(false);
+        game2Monster.transform.position = game2MonsterSpawn.transform.position;
+        game2Monster.transform.rotation = game2MonsterSpawn.transform.rotation;
+        game2Monster.SetActive(false);
     }
 
     // Update is called once per frame
@@ -114,6 +126,8 @@ public class Menu : MonoBehaviour
     {
         GUI.Box(new Rect(scrW, scrH, scrW * 3f, scrH), timeLimit.ToString());
         timeLimit -= Time.deltaTime;
+
+        GUI.Box(new Rect(scrW * 5, scrH, scrW * 2, scrH), "Lives " + health);
     }
 
     //Function for splash screen
@@ -256,6 +270,7 @@ public class Menu : MonoBehaviour
     //Function to go from playing the game back to the main menu
     void ToMenu()
     {
+        health = 5;
         showMainMenu = true;
         showSelectCharacterMenu = false;
         showOptionsMenu = false;
