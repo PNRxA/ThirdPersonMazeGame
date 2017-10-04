@@ -76,14 +76,20 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
-                anim.SetTrigger("jump");
+                if (!isDead)
+                {
+                    anim.SetTrigger("jump");
+                }
             }
 
         }
 
-        if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            anim.SetBool("moving", true);
+            if (!isDead)
+            {
+                anim.SetBool("moving", true);
+            }
         }
         else
         {
@@ -99,7 +105,10 @@ public class PlayerMove : MonoBehaviour
         // Play attack animation if the mouse button is pressed
         if (Input.GetMouseButtonDown(0))
         {
-            anim.SetTrigger("attack");
+            if (!isDead)
+            {
+                anim.SetTrigger("attack");
+            }
         }
     }
 }

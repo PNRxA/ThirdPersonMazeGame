@@ -49,7 +49,10 @@ public class Enemy : MonoBehaviour
                         // Attack function
                         Attack();
                         // Stop moving till after attack
-                        agent.Stop();
+                        if (agent.isActiveAndEnabled)
+                        {
+                            agent.Stop();
+                        }
                     }
                 }
             }
@@ -83,30 +86,48 @@ public class Enemy : MonoBehaviour
     void HurtPlayer()
     {
         // Player hurt animation on player
-        playerAnimator.SetTrigger("hurt");
+        if (playerAnimator.isActiveAndEnabled)
+        {
+            playerAnimator.SetTrigger("hurt");
+        }
     }
 
     void EndAttack()
     {
         // End attack and resume moving
         attacking = false;
-        agent.Resume();
+        if (agent.isActiveAndEnabled)
+        {
+            agent.Resume();
+        }
     }
 
     // Enter stunned state and unstun after 2 seconds
     public void StunAgent()
     {
         stunned = true;
-        agent.Stop();
+        if (agent.isActiveAndEnabled)
+        {
+            agent.Stop();
+        }
         Invoke("UnstunAgent", 5);
-        anim.SetTrigger("hurt");
-        anim.SetBool("stunned", true);
+        if (anim.isActiveAndEnabled)
+        {
+            anim.SetTrigger("hurt");
+            anim.SetBool("stunned", true);
+        }
     }
 
     public void UnstunAgent()
     {
         stunned = false;
-        anim.SetBool("stunned", false);
-        agent.Resume();
+        if (anim.isActiveAndEnabled)
+        {
+            anim.SetBool("stunned", false);
+        }
+        if (agent.isActiveAndEnabled)
+        {
+            agent.Resume();
+        }
     }
 }

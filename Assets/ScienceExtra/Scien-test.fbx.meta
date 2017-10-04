@@ -1,0 +1,529 @@
+fileFormatVersion: 2
+guid: 5ea59e72210adc845b79cfc6da6fa4ea
+timeCreated: 1507110635
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest_ctrl
+    100002: Chest_jnt
+    100004: End_jnt
+    100006: Head_geo
+    100008: L_end_jnt
+    100010: L_end_jnt 1
+    100012: L_foot_ctrl
+    100014: L_foot_geo
+    100016: L_foot_jnt
+    100018: L_hand_ctrl
+    100020: L_hand_geo
+    100022: L_Leg_jnt
+    100024: L_shoulder_jnt
+    100026: L_wrist_jnt
+    100028: Mesh_grp
+    100030: Neck_ctrl
+    100032: Neck_jnt
+    100034: R_end_jnt
+    100036: R_end_jnt 1
+    100038: R_Foot_ctrl
+    100040: R_foot_geo
+    100042: R_foot_jnt
+    100044: R_hand_ctrl
+    100046: R_hand_geo
+    100048: R_Reg_jnt
+    100050: R_shoulder_jnt
+    100052: R_wrist_jnt
+    100054: Root_ctrl
+    100056: Root_jnt
+    100058: //RootNode
+    100060: Torso_geo
+    100062: World_ctrl
+    400000: Chest_ctrl
+    400002: Chest_jnt
+    400004: End_jnt
+    400006: Head_geo
+    400008: L_end_jnt
+    400010: L_end_jnt 1
+    400012: L_foot_ctrl
+    400014: L_foot_geo
+    400016: L_foot_jnt
+    400018: L_hand_ctrl
+    400020: L_hand_geo
+    400022: L_Leg_jnt
+    400024: L_shoulder_jnt
+    400026: L_wrist_jnt
+    400028: Mesh_grp
+    400030: Neck_ctrl
+    400032: Neck_jnt
+    400034: R_end_jnt
+    400036: R_end_jnt 1
+    400038: R_Foot_ctrl
+    400040: R_foot_geo
+    400042: R_foot_jnt
+    400044: R_hand_ctrl
+    400046: R_hand_geo
+    400048: R_Reg_jnt
+    400050: R_shoulder_jnt
+    400052: R_wrist_jnt
+    400054: Root_ctrl
+    400056: Root_jnt
+    400058: //RootNode
+    400060: Torso_geo
+    400062: World_ctrl
+    2300000: Head_geo
+    2300002: L_foot_geo
+    2300004: L_hand_geo
+    2300006: R_foot_geo
+    2300008: R_hand_geo
+    3300000: Head_geo
+    3300002: L_foot_geo
+    3300004: L_hand_geo
+    3300006: R_foot_geo
+    3300008: R_hand_geo
+    4300000: Head_geo
+    4300002: L_hand_geo
+    4300004: R_hand_geo
+    4300006: R_foot_geo
+    4300008: L_foot_geo
+    4300010: Torso_geo
+    7400000: walk
+    7400002: jump
+    7400004: Attack
+    7400006: Idle
+    9500000: //RootNode
+    13700000: Torso_geo
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh_grp
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_hand_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/End_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/Head_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_hand_geo
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_end_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_foot_geo
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_end_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_foot_geo
+        weight: 1
+      - path: Torso_geo
+        weight: 1
+      - path: World_ctrl
+        weight: 1
+      - path: World_ctrl/L_foot_ctrl
+        weight: 1
+      - path: World_ctrl/R_Foot_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/L_hand_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/Neck_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/R_hand_ctrl
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: jump
+      takeName: Take 001
+      firstFrame: 59
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh_grp
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_hand_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/End_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/Head_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_hand_geo
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_end_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_foot_geo
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_end_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_foot_geo
+        weight: 1
+      - path: Torso_geo
+        weight: 1
+      - path: World_ctrl
+        weight: 1
+      - path: World_ctrl/L_foot_ctrl
+        weight: 1
+      - path: World_ctrl/R_Foot_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/L_hand_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/Neck_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/R_hand_ctrl
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Attack
+      takeName: Take 001
+      firstFrame: 91
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh_grp
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_hand_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/End_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/Head_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_hand_geo
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_end_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_foot_geo
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_end_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_foot_geo
+        weight: 1
+      - path: Torso_geo
+        weight: 1
+      - path: World_ctrl
+        weight: 1
+      - path: World_ctrl/L_foot_ctrl
+        weight: 1
+      - path: World_ctrl/R_Foot_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/L_hand_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/Neck_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/R_hand_ctrl
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 134
+      lastFrame: 141
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mesh_grp
+        weight: 1
+      - path: Root_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/L_shoulder_jnt/L_wrist_jnt/L_hand_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/End_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/Neck_jnt/Head_geo
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_end_jnt 1
+        weight: 1
+      - path: Root_jnt/Chest_jnt/R_shoulder_jnt/R_wrist_jnt/R_hand_geo
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_end_jnt
+        weight: 1
+      - path: Root_jnt/L_Leg_jnt/L_foot_jnt/L_foot_geo
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_end_jnt
+        weight: 1
+      - path: Root_jnt/R_Reg_jnt/R_foot_jnt/R_foot_geo
+        weight: 1
+      - path: Torso_geo
+        weight: 1
+      - path: World_ctrl
+        weight: 1
+      - path: World_ctrl/L_foot_ctrl
+        weight: 1
+      - path: World_ctrl/R_Foot_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/L_hand_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/Neck_ctrl
+        weight: 1
+      - path: World_ctrl/Root_ctrl/Chest_ctrl/R_hand_ctrl
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 25
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

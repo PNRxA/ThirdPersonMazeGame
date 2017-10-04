@@ -35,10 +35,14 @@ public class Menu : MonoBehaviour
     // Player's health
     public static int health = 3;
 
+    DoorMove[] doorMove;
+
     void Awake()
     {
         //After 2 seconds stop showing the splashscreen
         Invoke("EndSplash", 2f);
+        //Grab all doors to be able to reset them when resetting level
+        doorMove = FindObjectsOfType<DoorMove>();
     }
 
     void FixedUpdate()
@@ -78,7 +82,7 @@ public class Menu : MonoBehaviour
     void Update()
     {
         // Run the pause function when pressing escape
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && inGame)
         {
             PauseGame();
         }
@@ -321,5 +325,11 @@ public class Menu : MonoBehaviour
         game2Monster.transform.position = game2MonsterSpawn.transform.position;
         game2Monster.transform.rotation = game2MonsterSpawn.transform.rotation;
         game2Monster.SetActive(false);
+
+        //Reset science doors
+        foreach (var door in doorMove)
+        {
+            door.Close();
+        }
     }
 }
