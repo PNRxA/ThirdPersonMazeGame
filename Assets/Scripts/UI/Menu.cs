@@ -35,6 +35,15 @@ public class Menu : MonoBehaviour
     // Player's health
     public static int health = 3;
 
+    //Options menu member variables
+    public AudioSource audi;
+    public Vector2 resScrollPosition = Vector2.zero;
+    public float audioSlider;
+    //Resolution drop down menu will be set to screen resolution
+    private string buttonName = Screen.width + "x" + Screen.height;
+    private bool showResOptions = false;
+    private bool fullscreenToggle;
+
     DoorMove[] doorMove;
 
     void Awake()
@@ -43,6 +52,8 @@ public class Menu : MonoBehaviour
         Invoke("EndSplash", 2f);
         //Grab all doors to be able to reset them when resetting level
         doorMove = FindObjectsOfType<DoorMove>();
+        //Set audio source
+        audi = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -76,6 +87,16 @@ public class Menu : MonoBehaviour
         game2Monster.transform.position = game2MonsterSpawn.transform.position;
         game2Monster.transform.rotation = game2MonsterSpawn.transform.rotation;
         game2Monster.SetActive(false);
+
+        // Set toggle to current fullscreen status
+        fullscreenToggle = Screen.fullScreen;
+
+        // If there are player prefs load them in
+        if (PlayerPrefs.HasKey("volume"))
+        {
+            // Set audio
+            audioSlider = PlayerPrefs.GetFloat("volume");
+        }
     }
 
     // Update is called once per frame
@@ -90,6 +111,11 @@ public class Menu : MonoBehaviour
         if (gameOver == true && showPauseMenu == false)
         {
             PauseGame();
+        }
+
+        if (audioSlider != audi.volume)
+        {
+            audi.volume = audioSlider;
         }
     }
 
@@ -115,6 +141,10 @@ public class Menu : MonoBehaviour
         else if (showMainMenu && showOptionsMenu)
         {
             OptionsMenu();
+            if (showResOptions)
+            {
+                ResOptionsFunc();
+            }
         }
         else if (showMainMenu)
         {
@@ -127,6 +157,10 @@ public class Menu : MonoBehaviour
         else if (inGame && showPauseMenu && showOptionsMenu)
         {
             OptionsMenu();
+            if (showResOptions)
+            {
+                ResOptionsFunc();
+            }
         }
         else if (inGame && showPauseMenu)
         {
@@ -145,7 +179,10 @@ public class Menu : MonoBehaviour
         GUI.Box(new Rect(scrW, scrH, scrW * 3f, scrH), timeLimit.ToString());
         // Decrease time per second
         timeLimit -= Time.deltaTime;
-
+        if (timeLimit <= 0)
+        {
+            gameOver = true;
+        }
         // Displays health
         GUI.Box(new Rect(scrW * 5, scrH, scrW * 2, scrH), "Lives " + health);
     }
@@ -212,12 +249,91 @@ public class Menu : MonoBehaviour
     }
 
     //Function for the options menu
+    //Show options that the player can change
     void OptionsMenu()
     {
-        if (GUI.Button(new Rect(0, 0, scrW * 16, scrH * 9), "Back"))
+        GUI.Box(new Rect(scrW, scrH, scrW * 14, scrH * 6), "Options");
+
+        GUI.Box(new Rect(scrW * 2, scrH * 2, scrW * 4, scrH * 4), "Graphics");
+
+        GUI.Box(new Rect(scrW * 6, scrH * 2, scrW * 4, scrH * 4), "Sound");
+        //Used to have more options... R.I.P
+        GUI.BeginGroup(new Rect(scrW * 6.5f, scrH * 2.5f, scrW * 4, scrH * 4));
+        audioSlider = GUI.HorizontalSlider(new Rect(0, scrH, 3 * scrW, .5f * scrH), audioSlider, 0f, 1f);
+        GUI.EndGroup();
+
+        GUI.Box(new Rect(scrW * 10, scrH * 2, scrW * 4, scrH * 4), "Screen");
+
+        GUI.BeginGroup(new Rect(scrW * 10.5f, scrH * 2.5f, scrW * 3, scrH * 5f));
+
+        if (GUI.Button(new Rect(0, 0, scrW * 3, scrH * .5f), buttonName))
         {
-            showOptionsMenu = false;
+            // Show res dropdown menu
+            showResOptions = !showResOptions;
         }
+
+        // Only show fullscreen toggle when resolution dropdown isn't shown (to avoid accidental toggling when in dropdown)
+        if (!showResOptions)
+        {
+            fullscreenToggle = GUI.Toggle(new Rect(0, scrH, scrW * 3, scrH * .5f), fullscreenToggle, "Toggle Fullscreen");
+
+            Screen.fullScreen = fullscreenToggle;
+        }
+
+        GUI.EndGroup();
+
+        if (GUI.Button(new Rect(scrW * 7f, scrH * 8, scrW * 2, scrH), "Save & Back"))
+        {
+            // Go back to previous menu and also save options
+            SaveOptions();
+            showOptionsMenu = false;
+            showResOptions = false;
+        }
+    }
+
+    void ResOptionsFunc()
+    {
+        // Set up resolutions for button labels
+        string[] res = new string[] { "1024×576", "1152×648", "1280×720", "1280×800", "1366×768", "1440×900", "1600×900", "1680×1050", "1920×1080", "1920×1200", "2560×1440", "2560×1600", "3840×2160" };
+
+        // Set up resolution values to set (TODO could be improved)
+        int[] resW = new int[] { 1024, 1152, 1280, 1280, 1366, 1440, 1600, 1680, 1920, 1920, 2560, 2560, 3840 };
+        int[] resH = new int[] { 576, 648, 720, 800, 768, 900, 900, 1050, 1080, 1200, 1440, 1600, 2160 };
+
+        // Create GUI style solid black (kek) for scrollable resolutions
+        Texture2D black = new Texture2D(1, 1);
+        black.SetPixel(1, 1, Color.black);
+        GUIStyle solidBlack = new GUIStyle();
+        solidBlack.normal.background = black;
+
+
+        // Group for the drop down menu
+        GUI.BeginGroup(new Rect(scrW * 10.5f, scrH * 3, scrW * 3, scrH * 4));
+
+        resScrollPosition = GUI.BeginScrollView(new Rect(0, 0, scrW * 3, scrH * 4), resScrollPosition, new Rect(0, 0, scrW * 2.6f, scrH * 13));
+
+        GUI.Box(new Rect(0, 0, scrW * 3, scrH * 13), "", solidBlack);
+
+        for (int i = 0; i < 13; i++)
+        {
+            if (GUI.Button(new Rect(0, scrH * i, scrW * 2.7f, scrH), res[i]))
+            {
+                // Set resolution based on which button was pressed (array[i] name, array[i] width, array[i] height)
+                Screen.SetResolution(resW[i], resH[i], Screen.fullScreen);
+                buttonName = res[i];
+                showResOptions = false;
+            }
+        }
+
+        GUI.EndScrollView();
+
+        GUI.EndGroup();
+    }
+
+    // Save all options
+    void SaveOptions()
+    {
+        PlayerPrefs.SetFloat("volume", audioSlider);
     }
 
     //Function for the pause menu 
