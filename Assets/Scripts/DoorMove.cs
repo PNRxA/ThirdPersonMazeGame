@@ -30,11 +30,13 @@ public class DoorMove : MonoBehaviour
         }
     }
 
+    //Function to trigger doors to close
     public void Close()
     {
         StartCoroutine("MoveDoor", startPos);
     }
 
+    //Open door when player enters trigger
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Enemy")
@@ -43,18 +45,12 @@ public class DoorMove : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player" || other.tag == "Enemy")
-        {
-            //StartCoroutine("MoveDoor", startPos);
-        }
-    }
-
+    //Slerp door transform from current to specified location
     IEnumerator MoveDoor(Vector3 endPos)
     {
         float t = 0f;
         Vector3 startPos = transform.position;
+        //Move door to endPos from current position (startpos)
         while (t < 1f)
         {
             t += Time.deltaTime * speed;

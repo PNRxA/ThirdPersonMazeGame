@@ -59,6 +59,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    //End the game
     void GameOver()
     {
         menu.gameOver = true;
@@ -73,6 +74,7 @@ public class PlayerMove : MonoBehaviour
             moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
+            //Make character jump and play animation jump
             if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
@@ -84,6 +86,7 @@ public class PlayerMove : MonoBehaviour
 
         }
 
+        //Make character walk and play walking animation
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             if (!isDead)

@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
 		Attack();
     }
 
+    //Attack and trigger the enemy's stunned animation
     void Attack()
     {
         if (Input.GetMouseButtonDown(0))

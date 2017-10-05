@@ -118,6 +118,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //Leave the stunned state
     public void UnstunAgent()
     {
         stunned = false;

@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     public bool win = false;
     public bool gameOver = false;
     public bool showPauseMenu = false;
+    public GUISkin gUISkin;
 
     // Camera to see the menu screens
     public GameObject menuCamera;
@@ -121,6 +122,7 @@ public class Menu : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.skin = gUISkin;
         // Define the screen height and width for element placement
         scrH = Screen.height / 9;
         scrW = Screen.width / 16;

@@ -17,6 +17,7 @@ public class EndGameTrigger : MonoBehaviour
 
     }
 
+    //If the player enters this trigger, they win the game
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

@@ -31,15 +31,11 @@ public class ThirdPersonCamera : MonoBehaviour
         yaw += speedH * Input.GetAxis("Mouse X");
         // Lock camera so you can't 360
         pitch = Mathf.Min(80, Mathf.Max(-80, pitch + -Input.GetAxis("Mouse Y")));
-        //Quaternion lookPos = new Quaternion();
-        //lookPos = Quaternion.LookRotation(cam.transform.forward, cam.transform.up);
         // Rotate parent with camera if alive
         if (Menu.health > 0)
         {
             transform.parent.eulerAngles = new Vector3(0, yaw, 0);
         }
-        //transform.parent.rotation = Quaternion.LookRotation(cam.transform.forward, cam.transform.up);
-        //transform.parent.rotation = Quaternion.Euler(new Vector3(0f, transform.parent.rotation.eulerAngles.y, 0f));
         transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
     }
 }
